@@ -5,6 +5,9 @@ import base64
 import json
 auth_key = 'b85db88421954a8ea7b604c93a017787'
 
+dirname = os.path.dirname(__file__)
+content_path = os.path.join(dirname, 'content.txt')
+
 FRAMES_PER_BUFFER = 3200
 FORMAT = pyaudio.paInt16
 CHANNELS = 1
@@ -25,7 +28,7 @@ URL = "wss://api.assemblyai.com/v2/realtime/ws?sample_rate=16000"
 
 async def send_receive():
    print(f'Connecting websocket to url ${URL}')
-   async with websockets.connect(
+   async with websockets.client.connect(
        URL,
        extra_headers=(("Authorization", auth_key),),
        ping_interval=5,
