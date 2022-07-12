@@ -3,3 +3,4 @@ Pillow==9.2.0
 pyaudio==0.2.11
 websockets==10.3
 wordcloud==1.8.2.2
+inky[rpi,example-depends]

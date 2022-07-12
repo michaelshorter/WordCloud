@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 dirname = os.path.dirname(__file__)
 content_path = os.path.join(dirname, 'content.txt')
 wordcloud_image_path = os.path.join(dirname, 'latestWordCloud.png')
+dither_image_what_path = os.path.join(dirname, 'dither-image-what.py')
 
 #change the value in return to set the single color need, in hsl format.
 def grey_color_func(word, font_size, position,orientation,random_state=None, **kwargs):
@@ -34,5 +35,5 @@ plt.savefig(wordcloud_image_path)
 #plt.show()
 
 #
-os.system("python3 /home/pi/Pimoroni/inky/examples/what/dither-image-what.py --colour 'red' --image '/home/pi/latestWordCloud.png'")
+os.system("python3 " + dither_image_what_path + " --colour 'red' --image '" + wordcloud_image_path + "'")
 
