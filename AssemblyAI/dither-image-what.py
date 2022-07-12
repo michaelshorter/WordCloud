@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import argparse
-from PIL import Imagecdc
+from PIL import Image
 from inky import InkyWHAT
 
 print("""Inky wHAT: Dither image
