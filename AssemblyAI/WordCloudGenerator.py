@@ -4,12 +4,16 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
+dirname = os.path.dirname(__file__)
+content_path = os.path.join(dirname, 'content.txt')
+wordcloud_image_path = os.path.join(dirname, 'latestWordCloud.png')
+
 #change the value in return to set the single color need, in hsl format.
 def grey_color_func(word, font_size, position,orientation,random_state=None, **kwargs):
     return "black" 
 
 # read text from file and store in a variable
-with open("/home/pi/content.txt") as file:
+with open(content_path) as file:
     data = file.read()
 
 # create wordcloud using data
@@ -25,8 +29,8 @@ plt.imshow(wordcloud.recolor(color_func=grey_color_func),
 interpolation="bilinear")
 
 plt.axis("off")
-plt.savefig('latestWordCloud.png')
-plt.savefig('/home/pi/latestWordCloud.png')
+plt.savefig(wordcloud_image_path)
+#plt.savefig('/home/pi/latestWordCloud.png')
 #plt.show()
 
 #

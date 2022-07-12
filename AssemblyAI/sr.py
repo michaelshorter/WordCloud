@@ -28,7 +28,7 @@ URL = "wss://api.assemblyai.com/v2/realtime/ws?sample_rate=16000"
 
 async def send_receive():
    print(f'Connecting websocket to url ${URL}')
-   async with websockets.client.connect(
+   async with websockets.connect(
        URL,
        extra_headers=(("Authorization", auth_key),),
        ping_interval=5,
@@ -68,7 +68,7 @@ async def send_receive():
                    msg_object = json.loads(result_str)
                    if msg_object['message_type'] == 'FinalTranscript':
                        print(msg_object['text'])
-                       file_object = open('content.txt', 'a')
+                       file_object = open(content_path, 'a')
                        file_object.write (msg_object['text'])
                        file_object.write("\n")
                        file_object.write (" ")
