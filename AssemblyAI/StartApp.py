@@ -14,12 +14,14 @@ import os
 import time
 import datetime
 
+dirname = os.path.dirname(__file__)
+word_cloud_generator_path = os.path.join(dirname, 'WordCloudGenerator.py')
 
 while True:
     
     print('Timestamp: {:%Y-%m-%d %H:%M:%S}'.format(datetime.datetime.now()))
     print ("Activating Script")
-    os.system("python3 /home/pi/WordCloudGenerator.py")
+    os.system("python3 " + word_cloud_generator_path)
     print ("Completed Script")
     time.sleep(100)
     print ("Finished sleep")
