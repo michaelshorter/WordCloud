@@ -3,6 +3,7 @@ import websockets
 import asyncio
 import base64
 import json
+import os
 auth_key = 'b85db88421954a8ea7b604c93a017787'
 
 dirname = os.path.dirname(__file__)
