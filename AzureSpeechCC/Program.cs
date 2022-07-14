@@ -17,6 +17,7 @@ class Program
     async static Task Main(string[] args)
     {
         using var pipe = new NamedPipeServerStream("testpipe");
+        Console.WriteLine("Waiting for pipe client to connect...");
         pipe.WaitForConnection();
         Console.WriteLine("Pipe client connected.");
 
