@@ -15,10 +15,12 @@ def grey_color_func(word, font_size, position,orientation,random_state=None, **k
     return "black" 
 
 def generate_wordcloud_from_file(file_path):
+    print("Reading " + file_path + "...")
     # read text from file and store in a variable
     with open(file_path, 'r') as file:
         data = file.read()
 
+    print("Generating wordcloud...")
     # create wordcloud using data
     wordcloud = WordCloud(
         background_color="white", height=300, width=400,
@@ -42,8 +44,10 @@ def main():
         # Generate wordcloud from content file
         generate_wordcloud_from_file(content_path)
         # Write image to e-ink display
+        print("Writing image to e-ink display...")
         os.system("python3 " + dither_image_what_path + " --colour 'red' --image '" + wordcloud_image_path + "'")
         # Sleep
+        print("Sleeping...")
         time.sleep(100)
 
 if __name__ == "__main__":
