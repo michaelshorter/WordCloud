@@ -59,15 +59,16 @@ try:
         #amount_expected = struct.unpack('I', sock.recv(4))[0]
         #print("amount_expected :", amount_expected)
         
-        message = sock.recv(1024)
-        print("Received message : ", message.decode()) # making it a string
+        message = sock.recv(128)
+        if message:
+            print("Received message : ", message.decode()) # making it a string
 
-        # Write message to display
-        disp.fill(0)
-        disp.show()
-        draw.text((x, top), message.decode(), font=font, fill=255)
-        disp.image(image)
-        disp.show()
+            # Write message to display
+            disp.fill(0)
+            disp.show()
+            draw.text((x, top), message.decode(), font=font, fill=255)
+            disp.image(image)
+            disp.show()
 
 finally:
     print('closing socket...')
