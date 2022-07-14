@@ -33,7 +33,6 @@ class Program
 
         using var audioConfig = AudioConfig.FromDefaultMicrophoneInput();
         using var speechRecognizer = new SpeechRecognizer(speechConfig, audioConfig);
-        using var sw = new StreamWriter(pipe);
 
         speechConfig.SetProperty(PropertyId.SpeechServiceResponse_PostProcessingOption, "2");
 
@@ -49,10 +48,13 @@ class Program
 
                     try 
                     {
-                        //var buf = Encoding.ASCII.GetBytes(lastWord);     // Get ASCII byte array     
-                        //_bw.Write((uint)buf.Length);                // Write string length
-                        //_bw.Write(buf);                              // Write string
-                        sw.WriteLine(lastWord);
+                        using (StreamWriter sw = new StreamWriter(pipe, true)) 
+                        {
+                            //var buf = Encoding.ASCII.GetBytes(lastWord);     // Get ASCII byte array     
+                            //_bw.Write((uint)buf.Length);                // Write string length
+                            //_bw.Write(buf);                              // Write string
+                            sw.WriteLine(lastWord);
+                        }
                     }
                     catch (IOException err)
                     {
