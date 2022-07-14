@@ -48,13 +48,15 @@ class Program
 
                     try 
                     {
+                        byte[] messageBytes = Encoding.UTF8.GetBytes(lastWord);
+                        pipe.Write(messageBytes, 0, messageBytes.Length);
+                        /*
                         using (StreamWriter sw = new StreamWriter(pipe)) 
                         {
                             //var buf = Encoding.ASCII.GetBytes(lastWord);     // Get ASCII byte array     
                             //_bw.Write((uint)buf.Length);                // Write string length
                             //_bw.Write(buf);                              // Write string
-                            sw.Write(lastWord);
-                        }
+                        }*/
                     }
                     catch (IOException err)
                     {
