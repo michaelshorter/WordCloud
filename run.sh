@@ -1,4 +1,4 @@
 #!/bin/bash
-sudo python3 WordCloudGenerator.py & cd AzureSpeechCC
+sudo python3 WordCloudGenerator.py & cd AzureSpeechCC && dotnet run
 sleep 10s
-sudo python3 write_to_oled.py
+cd .. && sudo python write_to_oled.py
