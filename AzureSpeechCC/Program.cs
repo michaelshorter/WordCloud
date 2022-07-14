@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.IO.Pipes;
 
 
 class Program
@@ -15,6 +16,10 @@ class Program
 
     async static Task Main(string[] args)
     {
+        using var pipe = new NamedPipeServerStream("testpipe");
+        pipe.WaitForConnection();
+        Console.WriteLine("Pipe client connected.");
+
         var recognitionEnd = new TaskCompletionSource<string?>();
 
         var speechConfig = SpeechConfig.FromSubscription(YourSubscriptionKey, YourServiceRegion);
@@ -37,9 +42,22 @@ class Program
 
                     //Console.Clear();
                     //Console.WriteLine($"{e.Result.Text}");
-		    string lastWord = e.Result.Text.Split(' ').Last();
+		            string lastWord = e.Result.Text.Split(' ').Last();
                     Console.WriteLine($"{lastWord}");
-		    //Console.WriteLine(".");
+
+                    try 
+                    {
+                        using (BinaryWriter _bw = new BinaryWriter(pipe)) 
+                        {
+                            var buf = Encoding.ASCII.GetBytes(lastWord);     // Get ASCII byte array     
+                            _bw.Write((uint)buf.Length);                // Write string length
+                            _bw.Write(buf);                              // Write string
+                        }
+                    }
+                    catch (IOException e)
+                    {
+                        Console.WriteLine("PIPE ERROR: {0}", e.Message);
+                    }
                 }
                 else if (ResultReason.NoMatch == e.Result.Reason)
                 {
@@ -55,11 +73,11 @@ class Program
 
                     //Console.Clear();
                     Console.WriteLine($"Recognized: {e.Result.Text}");
-		    using (StreamWriter sw = new StreamWriter("content.txt", true)) 
-		    {
-			sw.BaseStream.Seek(0, SeekOrigin.End);
-		    	sw.WriteLine($"{e.Result.Text}");
-		    }
+                    using (StreamWriter sw = new StreamWriter("content.txt", true)) 
+                    {
+                        sw.BaseStream.Seek(0, SeekOrigin.End);
+                        sw.WriteLine($"{e.Result.Text}");
+                    }
                 }
                 else if (ResultReason.NoMatch == e.Result.Reason)
                 {
