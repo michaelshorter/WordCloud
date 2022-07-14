@@ -53,8 +53,7 @@ class Program
                             //var buf = Encoding.ASCII.GetBytes(lastWord);     // Get ASCII byte array     
                             //_bw.Write((uint)buf.Length);                // Write string length
                             //_bw.Write(buf);                              // Write string
-                            sw.Clear();
-                            sw.WriteLine(lastWord);
+                            sw.Write(lastWord);
                         }
                     }
                     catch (IOException err)
