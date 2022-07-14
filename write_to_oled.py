@@ -64,6 +64,8 @@ try:
             print("Received message : ", message.decode()) # making it a string
 
             # Write message to display
+            # Draw a black filled box to clear the image.
+            draw.rectangle((0, 0, width, height), outline=0, fill=0)
             disp.fill(0)
             disp.show()
             draw.text((x, top), message.decode(), font=font, fill=255)
