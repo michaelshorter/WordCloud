@@ -14,7 +14,7 @@ def grey_color_func(word, font_size, position,orientation,random_state=None, **k
     return "black" 
 
 # read text from file and store in a variable
-with open(content_path, 'r', encoding='utf-8') as file:
+with open(content_path, 'r', encoding='ascii') as file:
     data = file.read()
 
 print(data)
