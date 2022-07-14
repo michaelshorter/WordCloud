@@ -17,6 +17,8 @@ def grey_color_func(word, font_size, position,orientation,random_state=None, **k
 with open(content_path) as file:
     data = file.read()
 
+print(data)
+
 # create wordcloud using data
 wordcloud = WordCloud(
     background_color="white", height=300, width=400,
