@@ -41,11 +41,14 @@ def generate_wordcloud_from_file(file_path):
 
 def main():
     while True:
-        # Generate wordcloud from content file
-        generate_wordcloud_from_file(content_path)
-        # Write image to e-ink display
-        print("Writing image to e-ink display...")
-        os.system("python3 " + dither_image_what_path + " --colour 'red' --image '" + wordcloud_image_path + "'")
+        try:
+            # Generate wordcloud from content file
+            generate_wordcloud_from_file(content_path)
+            # Write image to e-ink display
+            print("Writing image to e-ink display...")
+            os.system("python3 " + dither_image_what_path + " --colour 'red' --image '" + wordcloud_image_path + "'")
+        except ValueError as e:
+            print("Warning: Not enough words to generate wordcloud from!")
         # Sleep
         print("Sleeping...")
         time.sleep(100)
