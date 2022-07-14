@@ -5,3 +5,4 @@
 - Navigate into the AssemblyAI folder with `cd AssemblyAI`
 - Install the Python requirements with `pip3 install -r requirements.txt`
 - Install inky requirements with `inky/./install.sh`
+- Enable SPI and I2C with `sudo raspi-config`
