@@ -48,11 +48,12 @@ class Program
 
                     try 
                     {
-                        using (BinaryWriter _bw = new BinaryWriter(pipe)) 
+                        using (StreamWriter sw = new StreamWriter(pipe)) 
                         {
-                            var buf = Encoding.ASCII.GetBytes(lastWord);     // Get ASCII byte array     
-                            _bw.Write((uint)buf.Length);                // Write string length
-                            _bw.Write(buf);                              // Write string
+                            //var buf = Encoding.ASCII.GetBytes(lastWord);     // Get ASCII byte array     
+                            //_bw.Write((uint)buf.Length);                // Write string length
+                            //_bw.Write(buf);                              // Write string
+                            sw.WriteLine(lastWord);
                         }
                     }
                     catch (IOException err)

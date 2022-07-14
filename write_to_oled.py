@@ -54,17 +54,18 @@ except socket.error as msg:
     sys.exit(1)
 
 try:
+    word = ""
     while True:
-        amount_expected = struct.unpack('I', sock.recv(128))[0]
-        print("amount_expected :", amount_expected)
+        #amount_expected = struct.unpack('I', sock.recv(4))[0]
+        #print("amount_expected :", amount_expected)
         
-        message = sock.recv(amount_expected)
-        print("Received message : ", message.decode()) # making it a string
+        message = sock.recv(1024)
+        print("Received message : ", message) # making it a string
 
         # Write message to display
         disp.fill(0)
         disp.show()
-        draw.text((x, top), message.decode(), font=font, fill=255)
+        draw.text((x, top), message, font=font, fill=255)
         disp.image(image)
         disp.show()
 
