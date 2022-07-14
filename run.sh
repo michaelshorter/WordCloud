@@ -1,2 +1,2 @@
 #!/bin/bash
-python3 WordCloudGenerator.py & cd AzureSpeechCC && dotnet run
+sudo python3 WordCloudGenerator.py & cd AzureSpeechCC && dotnet run
