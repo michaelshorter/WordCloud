@@ -5,7 +5,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 dirname = os.path.dirname(__file__)
-content_path = os.path.join(dirname, 'content.txt')
+content_path = os.path.join(dirname, 'AzureSpeechCC/content.txt')
 wordcloud_image_path = os.path.join(dirname, 'latestWordCloud.png')
 dither_image_what_path = os.path.join(dirname, 'dither-image-what.py')
 
