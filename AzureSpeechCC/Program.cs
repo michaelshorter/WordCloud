@@ -48,11 +48,12 @@ class Program
 
                     try 
                     {
-                        using (StreamWriter sw = new StreamWriter(pipe, true)) 
+                        using (StreamWriter sw = new StreamWriter(pipe)) 
                         {
                             //var buf = Encoding.ASCII.GetBytes(lastWord);     // Get ASCII byte array     
                             //_bw.Write((uint)buf.Length);                // Write string length
                             //_bw.Write(buf);                              // Write string
+                            sw.Clear();
                             sw.WriteLine(lastWord);
                         }
                     }
