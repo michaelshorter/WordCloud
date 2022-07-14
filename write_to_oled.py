@@ -39,7 +39,7 @@ bottom = height - padding
 x = 0
 
 # Load default font.
-font = ImageFont.truetype("Helvetica.ttf", 28)
+font = ImageFont.truetype("Helvetica.ttf", 20)
 
 # Create a UDS socket
 sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
@@ -55,7 +55,7 @@ except socket.error as msg:
 
 try:
     while True:
-        amount_expected = struct.unpack('I', sock.recv(4))[0]
+        amount_expected = struct.unpack('I', sock.recv(128))[0]
         print("amount_expected :", amount_expected)
         
         message = sock.recv(amount_expected)
@@ -64,7 +64,7 @@ try:
         # Write message to display
         disp.fill(0)
         disp.show()
-        draw.text((x, top), "hello mike", font=font, fill=255)
+        draw.text((x, top), message.decode(), font=font, fill=255)
         disp.image(image)
         disp.show()
 
