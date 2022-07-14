@@ -54,9 +54,9 @@ class Program
                             _bw.Write(buf);                              // Write string
                         }
                     }
-                    catch (IOException e)
+                    catch (IOException err)
                     {
-                        Console.WriteLine("PIPE ERROR: {0}", e.Message);
+                        Console.WriteLine("PIPE ERROR: {0}", err.Message);
                     }
                 }
                 else if (ResultReason.NoMatch == e.Result.Reason)
