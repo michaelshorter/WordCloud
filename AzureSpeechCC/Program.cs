@@ -11,7 +11,7 @@ using System.IO.Pipes;
 class Program
 {
 
-    static string YourSubscriptionKey = "9951ce8cec2d423cb09494b4d2a8b8d7";
+    static string YourSubscriptionKey = "subscription key goes here";
     static string YourServiceRegion = "uksouth";
 
     async static Task Main(string[] args)
