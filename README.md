@@ -88,6 +88,7 @@ Control + x
 After editing the dotnet file (Program.cs) it first needs to complie, to do this type the following into terminal
 
 dotnet build
+
 dotnet run
 
 
