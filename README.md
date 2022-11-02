@@ -62,6 +62,8 @@ truncate -s 0 content.txt
  ******************************************************************************
 LANGUAGE CHANGE
 
+All languages supported are here: https://learn.microsoft.com/en-us/azure/cognitive-services/speech-service/language-support?tabs=stt-tts
+
 In dataplicity type:
 su wordcloud
 (enter password - wordcloud)
