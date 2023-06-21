@@ -176,6 +176,10 @@ KNOWN BUGS
 
 3. Program crashes when mic is unpluged and plugged back in.
 
+initrims Issue fix:
+fsck -y /dev/______
+exit
+
 
 
  ******************************************************************************
