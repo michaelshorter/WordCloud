@@ -1,6 +1,9 @@
 # This code reads the state of a 4 position switch connected to pins GND, GPIO 6, GPIO 13, GPIO 19 and GPIO 26.
+# Depending on the switch state it will display images 1-4 on the E-Ink Display.
 
 import RPi.GPIO as GPIO
+import os
+import time
 
 # Set the GPIO mode to BCM
 GPIO.setmode(GPIO.BCM)
@@ -24,12 +27,24 @@ def get_switch_position():
 def print_switch_position(position):
     if position == (0, 1, 1, 1):
         print("Mode 4")
+        os.system("python3 dither-image-what.py --colour 'red' --image 'latestWordCloud.png'")
+        print("Mode 4 process completed")
+
     elif position == (1, 0, 1, 1):
         print("Mode 3")
+        os.system("python3 dither-image-what.py --colour 'red' --image 'test1.png'")
+        print("Mode 3 process completed")
+
     elif position == (1, 1, 0, 1):
-        print("Mode 2")
-    elif position == (1, 1, 1, 0):
         print("Mode 1")
+        os.system("python3 dither-image-what.py --colour 'red' --image 'test2.png'")
+        print("Mode 1 process completed")
+	
+    elif position == (1, 1, 1, 0):
+        print("Mode 2")
+        os.system("python3 dither-image-what.py --colour 'red' --image 'LoadScreen.jpg'")
+        print("Mode 2 process completed")
+
     else:
         print("Unknown Position")
 
@@ -42,9 +57,12 @@ if __name__ == "__main__":
 
             # Check if the switch state has changed
             if switch_position != prev_switch_state:
+                # Introduce a 1-second delay
+                time.sleep(1)
+
                 # Print the switch position
                 print_switch_position(switch_position)
-                
+
                 # Update the previous switch state
                 prev_switch_state = switch_position
             
